@@ -1,0 +1,39 @@
+# Ultralytics AGPL-3.0 License
+# 9-channel YOLO11 detector with a channel-split-only backbone.
+
+ch: 9
+nc: 80  # Overridden by the dataset class count during training.
+
+scales:
+  # [depth, width, max_channels]
+  n: [0.50, 0.25, 1024]
+
+# Dual-modality stem followed by four fusion stages.
+# Stage args: [channels, topk, n_win, stage_id, ConvNeXt depth].
+# The n model uses [1, 1, 2, 1], lighter than dual ConvNeXt-Tiny [3, 3, 9, 3].
+backbone:
+  - [-1, 1, channel1, [64]]
+  - [-1, 1, ChannelSplitBlockFusion, [128, 1, 8, 0, 1]]
+  - [-1, 1, ChannelSplitBlockFusion, [256, 2, 8, 1, 1]]  # P3/8
+  - [-1, 1, ChannelSplitBlockFusion, [512, 4, 4, 2, 2]]  # P4/16
+  - [-1, 1, ChannelSplitBlockFusion, [1024, 16, 4, 3, 1]]  # P5/32
+
+# Official YOLO11 PAN-FPN detection head.
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 3], 1, Concat, [1]]  # P5 upsample + backbone P4
+  - [-1, 2, C3k2, [512, False]]  # layer 7: head P4
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 2], 1, Concat, [1]]  # head P4 upsample + backbone P3
+  - [-1, 2, C3k2, [256, False]]  # layer 10: P3/8-small
+
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 7], 1, Concat, [1]]
+  - [-1, 2, C3k2, [512, False]]  # layer 13: P4/16-medium
+
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [[-1, 4], 1, Concat, [1]]
+  - [-1, 2, C3k2, [1024, True]]  # layer 16: P5/32-large
+
+  - [[10, 13, 16], 1, Detect, [nc]]

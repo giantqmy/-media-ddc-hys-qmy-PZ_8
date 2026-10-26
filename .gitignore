@@ -1,0 +1,70 @@
+# PZ_8 server-reinstallation backup
+# Keep source code, dependency manifests, datasets, training outputs,
+# model checkpoints, experiment logs, and calibration files.
+
+# Python-generated cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.hypothesis/
+.ipynb_checkpoints/
+
+# Build / packaging output (source manifests are NOT ignored)
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+parts/
+sdist/
+wheels/
+pip-wheel-metadata/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Local virtual environments and IDE caches
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+__pypackages__/
+.idea/
+.vscode/
+.ropeproject/
+.spyderproject
+.spyproject
+
+# Temporary / OS-generated files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local credentials (backup separately in secure storage if needed)
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+
+# IMPORTANT: intentionally NOT ignored:
+# runs/, weights/, checkpoints/, datasets/, wandb/, mlruns/
+# *.pt, *.pth, *.ckpt, *.safetensors, *.onnx, *.engine
+# requirements.txt, setup.py, *.npy, *.log

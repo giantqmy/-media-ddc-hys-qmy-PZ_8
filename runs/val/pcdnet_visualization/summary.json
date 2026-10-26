@@ -1,0 +1,27 @@
+{
+  "weights": "/media/ddc/新加卷/hys/qmy/PZ_8/runs/train/pcdnet_s0_aolp_dolp/weights/best.pt",
+  "data": "/media/ddc/新加卷/hys/qmy/PZ_8/ultralytics/cfg/datasets/pz6.yaml",
+  "split": "val",
+  "images": 2165,
+  "detections": 21490,
+  "conf": 0.25,
+  "iou": 0.65,
+  "imgsz": 512,
+  "names": {
+    "0": "Pedestrian",
+    "1": "Car",
+    "2": "Cyclist",
+    "3": "Truck",
+    "4": "Bus",
+    "5": "Tricycle"
+  },
+  "detection_columns": [
+    "x1",
+    "y1",
+    "x2",
+    "y2",
+    "confidence",
+    "class_id"
+  ],
+  "coordinates": "original S0 image pixels"
+}

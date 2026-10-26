@@ -1,0 +1,75 @@
+{
+  "all": {
+    "images": 2165,
+    "instances": 19525,
+    "precision": 0.9144589735743281,
+    "recall": 0.734684475976232,
+    "map50": 0.8158793164604273,
+    "map50_95": 0.5938345683281014
+  },
+  "per_class": [
+    {
+      "class": "Pedestrian",
+      "images": 1672,
+      "instances": 5917,
+      "precision": 0.848627644858554,
+      "recall": 0.679060334629035,
+      "map50": 0.7711154515741576,
+      "map50_95": 0.45777844460722383
+    },
+    {
+      "class": "Car",
+      "images": 2035,
+      "instances": 9166,
+      "precision": 0.9444704220289706,
+      "recall": 0.8688631900501854,
+      "map50": 0.9307827488114173,
+      "map50_95": 0.7655715119001302
+    },
+    {
+      "class": "Cyclist",
+      "images": 1417,
+      "instances": 3374,
+      "precision": 0.8801982047571272,
+      "recall": 0.7534084173088322,
+      "map50": 0.84090201307535,
+      "map50_95": 0.5495010933792861
+    },
+    {
+      "class": "Truck",
+      "images": 56,
+      "instances": 58,
+      "precision": 0.922920948294558,
+      "recall": 0.46551724137931033,
+      "map50": 0.5941061064425339,
+      "map50_95": 0.43056846263544946
+    },
+    {
+      "class": "Bus",
+      "images": 619,
+      "instances": 832,
+      "precision": 0.9311893149013506,
+      "recall": 0.8457895053483939,
+      "map50": 0.9129419450458536,
+      "map50_95": 0.7095161159473014
+    },
+    {
+      "class": "Tricycle",
+      "images": 178,
+      "instances": 178,
+      "precision": 0.9593473066054085,
+      "recall": 0.7954681671416355,
+      "map50": 0.8454276338132506,
+      "map50_95": 0.6500717814992182
+    }
+  ],
+  "images": 2165,
+  "weights": "/media/ddc/新加卷/hys/qmy/PZ_8/runs/train/pcdnet_s0_aolp_dolp/weights/best.pt",
+  "data": "/media/ddc/新加卷/hys/qmy/PZ_8/ultralytics/cfg/datasets/pz6.yaml",
+  "split": "val",
+  "speed_ms_per_image": {
+    "preprocess": 1.1667904912926446,
+    "inference": 25.153654939161644,
+    "postprocess": 10.475166361589698
+  }
+}
